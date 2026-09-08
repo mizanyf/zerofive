@@ -27,7 +27,7 @@ export default function Hero() {
       <div
         ref={bgRef}
         className={styles.bg}
-        style={{ backgroundImage: "url('/images/about/fixawal.png')" }}
+        style={{ backgroundImage: "url('/images/about/fixawal.webp')" }}
       />
       <div className={styles.overlay} />
 
