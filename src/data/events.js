@@ -99,7 +99,7 @@ export const events = [
         // 📸 FOTO 1 (Atas Kiri - Rasio Portrait 3:4)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/tirakatan-1.jpg',
-        src: './images/events/tirakatan1.png',
+        src: './images/events/tirakatan1.webp',
         alt: 'Suasana Malam Tirakatan HUT RI ke-81',
       },
       {
