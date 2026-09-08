@@ -31,21 +31,21 @@ export const events = [
         // 📸 FOTO 1 (Atas Kiri - Rasio Portrait 3:4)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/lomba-ibu-1.jpg',
-        src: './images/events/ibuibu1.png',
+        src: './images/events/ibuibu1.webp',
         alt: 'Keseruan Lomba Ibu-ibu',
       },
       {
         // 📸 FOTO 2 (Atas Kanan - Rasio Portrait 3:4)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/lomba-ibu-2.jpg',
-        src: './images/events/ibuibu2.png',
+        src: './images/events/ibuibu2.webp',
         alt: 'Aksi Peserta Lomba Ibu-ibu',
       },
       {
         // 📸 FOTO 3 (Bawah Lebar - Rasio Landscape 16:9 / Foto Bersama)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/lomba-ibu-bersama.jpg',
-        src: './images/events/ibuibu.png',
+        src: './images/events/ibuibu.webp',
         alt: 'Foto Bersama Peserta & Panitia Lomba Ibu-ibu',
       },
     ],
@@ -65,21 +65,21 @@ export const events = [
         // 📸 FOTO 1 (Atas Kiri - Rasio Portrait 3:4)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/lomba-anak-1.jpg',
-        src: './images/events/anakanak1.png',
+        src: './images/events/anakanak1.webp',
         alt: 'Keceriaan Lomba Anak-anak',
       },
       {
         // 📸 FOTO 2 (Atas Kanan - Rasio Portrait 3:4)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/lomba-anak-2.jpg',
-        src: './images/events/anakanak2.png',
+        src: './images/events/anakanak2.webp',
         alt: 'Antusiasme Peserta Lomba Anak-anak',
       },
       {
         // 📸 FOTO 3 (Bawah Lebar - Rasio Landscape 16:9 / Foto Bersama)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/lomba-anak-bersama.jpg',
-        src: './images/events/anakanak.png',
+        src: './images/events/anakanak.webp',
         alt: 'Foto Bersama Juara & Panitia Lomba Anak-anak',
       },
     ],
