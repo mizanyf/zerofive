@@ -1,0 +1,59 @@
+.values {
+  background: var(--bg);
+  padding: 10rem 0;
+}
+
+@media (max-width: 768px) {
+  .values {
+    padding: 6rem 0;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem 6rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.item {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  position: relative;
+  transition: border-color 0.4s ease;
+}
+
+.item:hover {
+  border-top-color: var(--accent);
+}
+
+.number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.32em;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--fg);
+}
+
+.desc {
+  color: var(--fg-2);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 400px;
+}

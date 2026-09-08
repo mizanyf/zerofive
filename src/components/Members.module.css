@@ -1,0 +1,192 @@
+﻿.section {
+  padding: 7rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  padding: 0 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.kicker {
+  justify-content: center;
+}
+
+.sub {
+  font-size: 1.05rem;
+  color: var(--fg-2);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* â”€â”€ Scroll track â”€â”€ */
+.wrapper {
+  position: relative;
+}
+
+.track {
+  display: flex;
+  gap: 1.4rem;
+  padding: 2rem 4rem;
+  overflow-x: hidden;
+  cursor: grab;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Auto-scroll animasi pelan */
+  animation: autoScroll 40s linear infinite;
+  will-change: transform;
+  width: max-content;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes autoScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* â”€â”€ Card â”€â”€ */
+.card {
+  flex: 0 0 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.55s var(--delay, 0s) ease,
+    transform 0.55s var(--delay, 0s) ease;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photoWrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover .photoWrap {
+  transform: scale(1.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18), 0 0 0 2px var(--accent);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-2);
+}
+
+.placeholder svg {
+  width: 52px;
+  height: 52px;
+  opacity: 0.45;
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--fg);
+  text-align: center;
+  white-space: nowrap;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* â”€â”€ Fade edges â”€â”€ */
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(to right, var(--bg), transparent);
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(to left, var(--bg), transparent);
+}
+
+/* â”€â”€ Hint â”€â”€ */
+.hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  opacity: 0.55;
+}
+
+.hint i {
+  font-size: 0.65rem;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 0 4rem;
+  }
+
+  .track {
+    padding: 2rem 1.5rem;
+    gap: 1.1rem;
+  }
+
+  .card {
+    flex: 0 0 120px;
+  }
+
+  .photoWrap {
+    width: 110px;
+    height: 110px;
+  }
+}
+

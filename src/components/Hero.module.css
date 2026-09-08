@@ -1,0 +1,174 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 8rem 1.5rem 5rem;
+  background-color: #0a0b10;
+}
+
+.bg {
+  position: absolute;
+  inset: -15% 0;
+  background-size: cover;
+  background-position: center 30%;
+  will-change: transform;
+}
+
+/* Pewarnaan background gradasi hitam diperjelas dan lebih terang */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 11, 16, 0.42) 0%,
+    rgba(10, 11, 16, 0.35) 30%,
+    rgba(10, 11, 16, 0.52) 70%,
+    rgba(10, 11, 16, 0.78) 100%
+  );
+}
+
+/* ── Main content (Centered, matching Image 1) ── */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.kickerWrap {
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: heroFadeUp 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.badgeKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 0.45rem 1.15rem;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.badgeKicker i {
+  color: var(--accent);
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1.08;
+  margin-bottom: 1.35rem;
+  opacity: 0;
+  animation: heroFadeUp 1s 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.headlineTop {
+  display: block;
+  font-size: clamp(2.4rem, 6.5vw, 4.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.headlineKeyword {
+  display: block;
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-shadow: 0 6px 30px rgba(212, 43, 43, 0.45);
+}
+
+.description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.38rem);
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 2.25rem;
+  max-width: 620px;
+  line-height: 1.65;
+  text-align: center;
+  opacity: 0;
+  animation: heroFadeUp 1s 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.cta {
+  display: flex;
+  gap: 1.15rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroFadeUp 1s 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Glass secondary button on dark background */
+.btnSecondaryGlass {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btnSecondaryGlass:hover {
+  background: #ffffff !important;
+  color: #0a0b10 !important;
+  border-color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+    padding: 7rem 1.25rem 4rem;
+  }
+
+  .headlineTop {
+    font-size: clamp(2rem, 10.5vw, 3.2rem);
+  }
+
+  .headlineKeyword {
+    font-size: clamp(2.2rem, 11.5vw, 3.5rem);
+  }
+
+  .description {
+    font-size: 1rem;
+    margin-bottom: 1.85rem;
+  }
+}
