@@ -84,7 +84,7 @@ export default function About() {
             {/* Contoh: src="/images/about/tentang-zerofive.jpg" */}
             {/* ================================================================ */}
             <img
-              src="/images/about/tosa.png"
+              src="/images/about/tosa.webp"
               alt="Komunitas ZeroFive"
               loading="lazy"
             />

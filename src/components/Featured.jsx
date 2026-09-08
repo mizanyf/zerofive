@@ -12,7 +12,7 @@ export default function Featured() {
       <div
         className={styles.bg}
         style={{
-          backgroundImage: "url('/images/about/featured.jpg')",
+          backgroundImage: "url('/images/about/featured.webp')",
         }}
       />
       <div className={styles.overlay} />

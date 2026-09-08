@@ -106,14 +106,14 @@ export const events = [
         // 📸 FOTO 2 (Atas Kanan - Rasio Portrait 3:4)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/tirakatan-2.jpg',
-        src: './images/events/tirakatan2.png',
+        src: './images/events/tirakatan2.webp',
         alt: 'Doa Bersama & Pemotongan Tumpeng Kemerdekaan',
       },
       {
         // 📸 FOTO 3 (Bawah Lebar - Rasio Landscape 16:9 / Foto Bersama)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/tirakatan-bersama.jpg',
-        src: './images/events/tirakatan.png',
+        src: './images/events/tirakatan.webp',
         alt: 'Foto Bersama Warga & Tokoh Masyarakat Malam Tirakatan',
       },
     ],
@@ -133,21 +133,21 @@ export const events = [
         // 📸 FOTO 1 (Atas Kiri - Rasio Portrait 3:4)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/maulid-1.jpg',
-        src: './images/events/maulid1.png',
+        src: './images/events/maulid1.webp',
         alt: 'Pembacaan Sholawat & Doa Maulid Nabi',
       },
       {
         // 📸 FOTO 2 (Atas Kanan - Rasio Portrait 3:4)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/maulid-2.jpg',
-        src: './images/events/maulid2.png',
+        src: './images/events/maulid2.webp',
         alt: 'Kajian & Tausiyah Maulid Nabi',
       },
       {
         // 📸 FOTO 3 (Bawah Lebar - Rasio Landscape 16:9 / Foto Bersama)
         // ⬇️ GANTI 'src' di bawah dengan foto Anda dari folder public/images/events/
         // Contoh: src: '/images/events/maulid-bersama.jpg',
-        src: './images/events/maulid.png',
+        src: './images/events/maulid.webp',
         alt: 'Foto Bersama Jamaah & Panitia Muda-Mudi Maulid Nabi',
       },
     ],

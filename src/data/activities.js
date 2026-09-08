@@ -18,7 +18,7 @@ export const activities = [
     // 📸 FOTO KEGIATAN 1 (Kartu Besar)
     // ⬇️ GANTI 'photo' di bawah jika sudah ada file di public/images/activities/
     // Contoh: photo: '/images/activities/gotong-royong.jpg',
-    photo: './images/activities/pembubaran.png',
+    photo: './images/activities/pembubaran.webp',
     large: true,
   },
   {
@@ -29,7 +29,7 @@ export const activities = [
     // 📸 FOTO KEGIATAN 2
     // ⬇️ GANTI 'photo' di bawah jika sudah ada file di public/images/activities/
     // Contoh: photo: '/images/activities/olahraga.jpg',
-    photo: './images/activities/bedengan.jpg',
+    photo: './images/activities/bedengan.webp',
     large: false,
   },
   {
@@ -40,7 +40,7 @@ export const activities = [
     // 📸 FOTO KEGIATAN 3
     // ⬇️ GANTI 'photo' di bawah jika sudah ada file di public/images/activities/
     // Contoh: photo: '/images/activities/sosial.jpg',
-    photo: './images/activities/gladibersih.png',
+    photo: './images/activities/gladibersih.webp',
     large: false,
   },
   {
@@ -51,7 +51,7 @@ export const activities = [
     // 📸 FOTO KEGIATAN 4
     // ⬇️ GANTI 'photo' di bawah jika sudah ada file di public/images/activities/
     // Contoh: photo: '/images/activities/kreatif.jpg',
-    photo: './images/events/ibuibu.png',
+    photo: './images/events/ibuibu.webp',
     large: false,
   },
   {
@@ -62,7 +62,7 @@ export const activities = [
     // 📸 FOTO KEGIATAN 5
     // ⬇️ GANTI 'photo' di bawah jika sudah ada file di public/images/activities/
     // Contoh: photo: '/images/activities/kepemudaan.jpg',
-    photo: './images/activities/rapat.png',
+    photo: './images/activities/rapat.webp',
     large: false,
   },
   {
@@ -73,7 +73,7 @@ export const activities = [
     // 📸 FOTO KEGIATAN 6
     // ⬇️ GANTI 'photo' di bawah jika sudah ada file di public/images/activities/
     // Contoh: photo: '/images/activities/perayaan.jpg',
-    photo: './images/activities/ngopi.png',
+    photo: './images/activities/ngopi.webp',
     large: false,
   },
 ];
