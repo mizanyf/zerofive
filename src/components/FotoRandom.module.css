@@ -1,0 +1,178 @@
+/* ============================================================
+   OUR STORY — 2 Baris Animasi (Atas ke Kiri, Bawah ke Kanan)
+   Rasio Foto 3:4 · Efek Zoom Halus Mirip Gallery · Kecepatan Tenang
+   ============================================================ */
+
+.section {
+  background: var(--bg);
+  padding: 6rem 0 7rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.75rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.header p {
+  max-width: 440px;
+  color: var(--fg-2);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ---------- Container Marquee ---------- */
+.marqueeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 0.5rem 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.marqueeRow {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Baris Atas: Bergerak ke KIRI (Santai & Mulus) */
+.rowTop .track {
+  animation: marqueeLeft 65s linear infinite;
+}
+
+/* Baris Bawah: Bergerak ke KANAN (Santai & Mulus) */
+.rowBottom .track {
+  animation: marqueeRight 65s linear infinite;
+}
+
+/* Jeda animasi saat kursor berada di atas baris */
+.marqueeRow:hover .track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ---------- Kartu Foto (Rasio Portrait 3:4, Efek Zoom Mirip Gallery) ---------- */
+.card {
+  flex: 0 0 220px;
+  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-3);
+  user-select: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+  contain: paint;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.card:active {
+  transform: translateY(-2px);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+/* Efek zoom halus saat hover & saat diklik (active) */
+.card:hover .img {
+  transform: scale(1.04);
+}
+
+.card:active .img {
+  transform: scale(1.07);
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 900px) {
+  .section {
+    padding: 4.5rem 0 5.5rem;
+  }
+
+  .card {
+    flex: 0 0 180px;
+  }
+
+  .marqueeContainer {
+    gap: 1rem;
+  }
+
+  .track {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex: 0 0 150px;
+    border-radius: 6px;
+  }
+}
+
+/* Preferensi gerak berkurang */
+@media (prefers-reduced-motion: reduce) {
+  .rowTop .track,
+  .rowBottom .track {
+    animation-duration: 140s;
+  }
+}

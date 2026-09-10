@@ -7,6 +7,7 @@ import About from './components/About';
 import Activities from './components/Activities';
 import Featured from './components/Featured';
 import Gallery from './components/Gallery';
+import FotoRandom from './components/FotoRandom';
 import Events from './components/Events';
 import Values from './components/Values';
 import Members from './components/Members';
@@ -53,6 +54,7 @@ function App() {
         <Activities />
         <Featured />
         <Gallery />
+        <FotoRandom />
         <Events />
         <Values />
         <Members />
