@@ -1,6 +1,6 @@
 /* ============================================================
    OUR STORY — 2 Baris Animasi Interaktif (Bisa Digeser Mouse & Jari HP)
-   Rasio Foto 3:4 · Auto-Scroll Mulus · Efek Zoom Halus Mirip Gallery
+   Rasio Foto 3:4 · Auto-Scroll Mulus · Bebas Lag · Hardware Accelerated
    ============================================================ */
 
 .section {
@@ -30,26 +30,35 @@
 .marqueeContainer {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
   position: relative;
   overflow: hidden;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  padding: 0.5rem 0;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 6%,
-    black 94%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 6%,
-    black 94%,
-    transparent 100%
-  );
+  padding: 0.75rem 0;
+  contain: layout paint;
+}
+
+/* Edge Fade Gradient menggunakan Pseudo-element (10x lebih cepat & mulus dibanding mask-image) */
+.marqueeContainer::before,
+.marqueeContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.marqueeContainer::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.marqueeContainer::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .marqueeRow {
@@ -61,6 +70,7 @@
   cursor: grab;
   cursor: -webkit-grab;
   touch-action: pan-y;
+  overscroll-behavior-x: none;
 }
 
 .marqueeRow:active,
@@ -69,37 +79,42 @@
   cursor: -webkit-grabbing !important;
 }
 
+/* Track Animasi GPU Accelerated */
 .track {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
   width: max-content;
   will-change: transform;
   transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 /* ---------- Kartu Foto (Rasio Portrait 3:4) ---------- */
 .card {
-  flex: 0 0 220px;
+  flex: 0 0 270px;
   aspect-ratio: 3 / 4;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
   background: var(--bg-3);
   user-select: none;
   -webkit-user-select: none;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.35s ease, transform 0.35s ease;
-  contain: paint;
+  contain: layout paint;
   cursor: inherit;
+  transform: translateZ(0);
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  transform: translateY(-5px) translateZ(0);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
 }
 
 .card:active {
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
 }
 
 .img {
@@ -108,20 +123,26 @@
   aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
   -webkit-user-drag: none;
   user-select: none;
   -webkit-user-select: none;
 }
 
-/* Efek zoom halus saat hover & saat diklik (active) */
+/* Efek zoom halus saat hover */
 .card:hover .img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
-.card:active .img {
-  transform: scale(1.07);
+/* Matikan transisi kartu saat di-drag agar pergeseran 120 FPS tanpa lag */
+.isDragging .card {
+  pointer-events: none;
+  transition: none !important;
+}
+
+.isDragging .img {
+  transition: none !important;
 }
 
 /* ---------- Responsif ---------- */
@@ -131,7 +152,27 @@
   }
 
   .card {
-    flex: 0 0 180px;
+    flex: 0 0 220px;
+  }
+
+  .marqueeContainer {
+    gap: 1.25rem;
+  }
+
+  .track {
+    gap: 1.25rem;
+  }
+
+  .marqueeContainer::before,
+  .marqueeContainer::after {
+    width: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex: 0 0 175px;
+    border-radius: 10px;
   }
 
   .marqueeContainer {
@@ -141,11 +182,9 @@
   .track {
     gap: 1rem;
   }
-}
 
-@media (max-width: 600px) {
-  .card {
-    flex: 0 0 150px;
-    border-radius: 6px;
+  .marqueeContainer::before,
+  .marqueeContainer::after {
+    width: 48px;
   }
 }

@@ -1,18 +1,19 @@
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import styles from './FotoRandom.module.css';
 import { ourStoryTop, ourStoryBottom } from '../data/ourStory';
 
 function MarqueeRow({ items, direction = 'left', speed = 38 }) {
+  const containerRef = useRef(null);
   const trackRef = useRef(null);
   const posRef = useRef(0);
-  const isPausedRef = useRef(false);
+  const velocityRef = useRef(0);
   const isDraggingRef = useRef(false);
-  const dragStartXRef = useRef(0);
-  const dragStartPosRef = useRef(0);
+  const isHoveredRef = useRef(false);
+  const dragLastXRef = useRef(0);
+  const dragLastTimeRef = useRef(0);
   const singleSetWidthRef = useRef(0);
-  const [isDragging, setIsDragging] = useState(false);
 
-  // 4 set duplikasi untuk loop tanpa batas yang mulus di segala ukuran layar
+  // 4 set duplikasi untuk infinite loop yang mulus di segala ukuran monitor (hingga 4K)
   const quadrupledItems = useMemo(
     () => [...items, ...items, ...items, ...items],
     [items]
@@ -39,23 +40,33 @@ function MarqueeRow({ items, direction = 'left', speed = 38 }) {
     }
     window.addEventListener('resize', updateWidth);
 
-    // Animasi requestAnimationFrame yang mulus & GPU accelerated
+    // Animasi requestAnimationFrame yang mulus dengan momentum & GPU acceleration
     let lastTimestamp = performance.now();
     let rafId;
+    const baseVelocity = direction === 'left' ? -speed : speed;
 
     const animate = (timestamp) => {
-      const dt = Math.min((timestamp - lastTimestamp) / 1000, 0.1);
+      const dt = Math.min((timestamp - lastTimestamp) / 1000, 0.05);
       lastTimestamp = timestamp;
 
       const W = singleSetWidthRef.current;
-      if (W > 0 && !isPausedRef.current && !isDraggingRef.current) {
-        if (direction === 'left') {
-          posRef.current -= speed * dt;
-        } else {
-          posRef.current += speed * dt;
+      if (W > 0) {
+        if (!isDraggingRef.current) {
+          if (Math.abs(velocityRef.current) > 1) {
+            // Meluncur dengan inersia / momentum alami
+            posRef.current += velocityRef.current * dt;
+            // Gesekan deselerasi halus
+            velocityRef.current *= Math.pow(0.92, dt * 60);
+          } else {
+            velocityRef.current = 0;
+            // Auto scroll normal saat mouse tidak hover
+            if (!isHoveredRef.current) {
+              posRef.current += baseVelocity * dt;
+            }
+          }
         }
 
-        // Wrap around mulus tanpa jeda
+        // Loop tanpa jeda (wrap-around seamlessly)
         while (posRef.current <= -2 * W) {
           posRef.current += W;
         }
@@ -73,20 +84,40 @@ function MarqueeRow({ items, direction = 'left', speed = 38 }) {
 
     rafId = requestAnimationFrame(animate);
 
+    // Wheel event listener (untuk geser touchpad horizontal / shift+scroll yang super responsif)
+    const container = containerRef.current;
+    const handleWheel = (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        e.preventDefault();
+        posRef.current -= e.deltaX;
+        velocityRef.current = -e.deltaX * 12;
+      }
+    };
+
+    if (container) {
+      container.addEventListener('wheel', handleWheel, { passive: false });
+    }
+
     return () => {
       cancelAnimationFrame(rafId);
       ro.disconnect();
       window.removeEventListener('resize', updateWidth);
+      if (container) {
+        container.removeEventListener('wheel', handleWheel);
+      }
     };
   }, [direction, speed]);
 
   const onPointerDown = (e) => {
     if (e.button !== undefined && e.button !== 0) return;
     isDraggingRef.current = true;
-    isPausedRef.current = true;
-    dragStartXRef.current = e.clientX;
-    dragStartPosRef.current = posRef.current;
-    setIsDragging(true);
+    dragLastXRef.current = e.clientX;
+    dragLastTimeRef.current = performance.now();
+    velocityRef.current = 0;
+
+    if (containerRef.current) {
+      containerRef.current.classList.add(styles.isDragging);
+    }
 
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
@@ -97,64 +128,60 @@ function MarqueeRow({ items, direction = 'left', speed = 38 }) {
 
   const onPointerMove = (e) => {
     if (!isDraggingRef.current) return;
-    const deltaX = e.clientX - dragStartXRef.current;
-    let newPos = dragStartPosRef.current + deltaX;
+    const now = performance.now();
+    const dt = Math.max((now - dragLastTimeRef.current) / 1000, 0.001);
+    const deltaX = e.clientX - dragLastXRef.current;
+    dragLastXRef.current = e.clientX;
+    dragLastTimeRef.current = now;
 
-    const W = singleSetWidthRef.current;
-    if (W > 0) {
-      while (newPos <= -2 * W) {
-        newPos += W;
-        dragStartPosRef.current += W;
-      }
-      while (newPos > -W) {
-        newPos -= W;
-        dragStartPosRef.current -= W;
-      }
-    }
+    posRef.current += deltaX;
 
-    posRef.current = newPos;
-    if (trackRef.current) {
-      trackRef.current.style.transform = `translate3d(${newPos}px, 0, 0)`;
-    }
+    // Hitung kecepatan geser dengan filter smoothing
+    const instantV = deltaX / dt;
+    velocityRef.current = velocityRef.current * 0.3 + instantV * 0.7;
   };
 
   const onPointerUp = (e) => {
     if (isDraggingRef.current) {
       isDraggingRef.current = false;
-      setIsDragging(false);
+      if (containerRef.current) {
+        containerRef.current.classList.remove(styles.isDragging);
+      }
       try {
         e.currentTarget.releasePointerCapture(e.pointerId);
       } catch {
         // ignore
       }
-      // Pada perangkat sentuh (HP), otomatis lanjutkan animasi setelah jari diangkat
-      if (e.pointerType === 'touch') {
-        isPausedRef.current = false;
-      }
+      // Batasi kecepatan momentum maksimal agar meluncur halus
+      const maxV = 2200;
+      velocityRef.current = Math.max(-maxV, Math.min(maxV, velocityRef.current));
     }
   };
 
   const onPointerCancel = () => {
     isDraggingRef.current = false;
-    setIsDragging(false);
-    isPausedRef.current = false;
+    velocityRef.current = 0;
+    if (containerRef.current) {
+      containerRef.current.classList.remove(styles.isDragging);
+    }
   };
 
   const onPointerEnter = (e) => {
     if (e.pointerType === 'mouse') {
-      isPausedRef.current = true;
+      isHoveredRef.current = true;
     }
   };
 
   const onPointerLeave = (e) => {
-    if (e.pointerType === 'mouse' && !isDraggingRef.current) {
-      isPausedRef.current = false;
+    if (e.pointerType === 'mouse') {
+      isHoveredRef.current = false;
     }
   };
 
   return (
     <div
-      className={`${styles.marqueeRow} ${isDragging ? styles.isDragging : ''}`}
+      ref={containerRef}
+      className={styles.marqueeRow}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -195,12 +222,12 @@ export default function FotoRandom() {
         </div>
       </div>
 
-      {/* Marquee Container dengan Edge Fade Mask */}
+      {/* Marquee Container dengan Edge Fade Gradient */}
       <div className={styles.marqueeContainer}>
-        {/* BARIS ATAS: 10 FOTO - Bergerak ke KIRI, bisa digeser mouse / jari */}
+        {/* BARIS ATAS: 10 FOTO (our.webp - our9.webp) - Bergerak ke KIRI */}
         <MarqueeRow items={ourStoryTop} direction="left" speed={38} />
 
-        {/* BARIS BAWAH: 10 FOTO - Bergerak ke KANAN, bisa digeser mouse / jari */}
+        {/* BARIS BAWAH: 10 FOTO (our10.webp - our19.webp) - Bergerak ke KANAN */}
         <MarqueeRow items={ourStoryBottom} direction="right" speed={38} />
       </div>
     </section>

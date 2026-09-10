@@ -5,7 +5,7 @@
 // 1. Masukkan file foto Anda ke dalam folder:
 //    👉 public/images/gallery/  (atau buat folder baru di public/images/)
 // 2. Ganti nilai 'src' di bawah sesuai nama file foto Anda.
-//    Contoh: src: './images/gallery/foto-baru-1.webp'
+//    Contoh: src: './images/gallery/our.webp'
 // 3. Format foto yang disarankan: Rasio 3:4 (Portrait)
 //
 // 💡 KETERANGAN BARIS:
@@ -13,110 +13,110 @@
 // - ourStoryBottom : 10 Foto untuk baris BAWAH (bergerak ke KANAN)
 // ==============================================================================
 
-// ── BARIS ATAS (10 FOTO - ANIMASI KE KIRI) ──────────────────────────────────
+// ── BARIS ATAS (10 FOTO: our.webp s/d our9.webp) ────────────────────────────
 export const ourStoryTop = [
   {
     id: 1,
-    src: './images/gallery/random.webp',
+    src: './images/gallery/our.webp',
     alt: 'Our Story 1',
   },
   {
     id: 2,
-    src: './images/events/ibuibu1.webp',
+    src: './images/gallery/our1.webp',
     alt: 'Our Story 2',
   },
   {
     id: 3,
-    src: './images/activities/bedengan.webp',
+    src: './images/gallery/our2.webp',
     alt: 'Our Story 3',
   },
   {
     id: 4,
-    src: './images/gallery/random2.webp',
+    src: './images/gallery/our14.webp',
     alt: 'Our Story 4',
   },
   {
     id: 5,
-    src: './images/events/anakanak1.webp',
+    src: './images/gallery/our4.webp',
     alt: 'Our Story 5',
   },
   {
     id: 6,
-    src: './images/activities/gladibersih.webp',
+    src: './images/gallery/our5.webp',
     alt: 'Our Story 6',
   },
   {
     id: 7,
-    src: './images/gallery/random6.webp',
+    src: './images/gallery/our6.webp',
     alt: 'Our Story 7',
   },
   {
     id: 8,
-    src: './images/events/tirakatan1.webp',
+    src: './images/gallery/our7.webp',
     alt: 'Our Story 8',
   },
   {
     id: 9,
-    src: './images/activities/ngopi.webp',
+    src: './images/gallery/our8.webp',
     alt: 'Our Story 9',
   },
   {
     id: 10,
-    src: './images/gallery/random8.webp',
+    src: './images/gallery/our9.webp',
     alt: 'Our Story 10',
   },
 ];
 
-// ── BARIS BAWAH (10 FOTO - ANIMASI KE KANAN) ─────────────────────────────────
+// ── BARIS BAWAH (10 FOTO: our10.webp s/d our19.webp) ────────────────────────
 export const ourStoryBottom = [
   {
     id: 11,
-    src: './images/gallery/random9.webp',
+    src: './images/gallery/our10.webp',
     alt: 'Our Story 11',
   },
   {
     id: 12,
-    src: './images/events/anakanak2.webp',
+    src: './images/gallery/our11.webp',
     alt: 'Our Story 12',
   },
   {
     id: 13,
-    src: './images/activities/pembubaran.webp',
+    src: './images/gallery/our12.webp',
     alt: 'Our Story 13',
   },
   {
     id: 14,
-    src: './images/gallery/random4.webp',
+    src: './images/gallery/our13.webp',
     alt: 'Our Story 14',
   },
   {
     id: 15,
-    src: './images/events/ibuibu2.webp',
+    src: './images/gallery/our3.webp',
     alt: 'Our Story 15',
   },
   {
     id: 16,
-    src: './images/about/pentas.webp',
+    src: './images/gallery/our15.webp',
     alt: 'Our Story 16',
   },
   {
     id: 17,
-    src: './images/gallery/random7.webp',
+    src: './images/gallery/our16.webp',
     alt: 'Our Story 17',
   },
   {
     id: 18,
-    src: './images/events/maulid1.webp',
+    src: './images/gallery/our17.webp',
     alt: 'Our Story 18',
   },
   {
     id: 19,
-    src: './images/activities/rapat.webp',
+    src: './images/gallery/our18.webp',
     alt: 'Our Story 19',
   },
   {
     id: 20,
-    src: './images/events/tirakatan2.webp',
+    src: './images/gallery/our19.webp',
     alt: 'Our Story 20',
   },
 ];
