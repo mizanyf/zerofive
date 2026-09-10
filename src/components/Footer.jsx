@@ -36,9 +36,22 @@ export default function Footer() {
               Kelurahan Mulyorejo, Kota Malang, Jawa Timur
             </p>
             <div className={styles.social}>
-              <a href="#" aria-label="Instagram"><i className="fab fa-instagram" /></a>
-              <a href="#" aria-label="WhatsApp"><i className="fab fa-whatsapp" /></a>
-              <a href="#" aria-label="TikTok"><i className="fab fa-tiktok" /></a>
+              <a
+                href="https://www.instagram.com/karangtaruna05mulyorejo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <i className="fab fa-instagram" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@karangtaruna05mulyorejo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TikTok"
+              >
+                <i className="fab fa-tiktok" />
+              </a>
             </div>
           </div>
 

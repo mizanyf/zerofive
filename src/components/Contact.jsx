@@ -25,22 +25,49 @@ export default function Contact() {
 
             <div className={styles.detail}>
               <div className={styles.label}>Instagram</div>
-              <div className={styles.value}>@zerofive</div>
+              <div className={styles.value}>
+                <a
+                  href="https://www.instagram.com/karangtaruna05mulyorejo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contactLink}
+                >
+                  @karangtaruna05mulyorejo
+                </a>
+              </div>
             </div>
 
             <div className={styles.detail}>
-              <div className={styles.label}>WhatsApp</div>
-              <div className={styles.value}>+62 XXX-XXXX-XXXX</div>
+              <div className={styles.label}>TikTok</div>
+              <div className={styles.value}>
+                <a
+                  href="https://www.tiktok.com/@karangtaruna05mulyorejo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contactLink}
+                >
+                  @karangtaruna05mulyorejo
+                </a>
+              </div>
             </div>
 
             <div className={styles.social}>
-              <a href="#" className={styles.socialLink} aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/karangtaruna05mulyorejo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="Instagram"
+              >
                 <i className="fab fa-instagram" />
               </a>
-              <a href="#" className={styles.socialLink} aria-label="WhatsApp">
-                <i className="fab fa-whatsapp" />
-              </a>
-              <a href="#" className={styles.socialLink} aria-label="TikTok">
+              <a
+                href="https://www.tiktok.com/@karangtaruna05mulyorejo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="TikTok"
+              >
                 <i className="fab fa-tiktok" />
               </a>
             </div>

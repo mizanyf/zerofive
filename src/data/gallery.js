@@ -137,7 +137,7 @@ export const galleryItems = [
   },
   {
     id: 18,
-    src: 'https://picsum.photos/seed/zerofive-g18-tanam/600/700',
+    src: './images/gallery/our17.webp',
     fullSrc: 'https://picsum.photos/seed/zerofive-g18-tanam/1200/1400',
     cat: 'Gotong Royong',
     title: 'Tanam Pohon Lingkungan',

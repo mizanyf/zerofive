@@ -55,9 +55,9 @@ function App() {
         <Featured />
         <Gallery />
         <FotoRandom />
+        <Members />
         <Events />
         <Values />
-        <Members />
         <Contact />
       </main>
       <Footer />

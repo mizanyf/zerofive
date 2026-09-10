@@ -1,192 +1,353 @@
-﻿.section {
-  padding: 7rem 0 6rem;
+/* ============================================================
+   ANGGOTA KAMI — 2 Baris Animasi Interaktif
+   Foto Bulat Diperbesar · Geser Mouse & Jari HP · 120 FPS
+   ============================================================ */
+
+.section {
+  background: var(--bg);
+  padding: 6rem 0 7rem;
   position: relative;
   overflow: hidden;
 }
 
 .header {
-  text-align: center;
-  padding: 0 2rem;
-  margin-bottom: 3.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.75rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.kicker {
-  justify-content: center;
-}
-
-.sub {
-  font-size: 1.05rem;
+.header p {
+  max-width: 440px;
   color: var(--fg-2);
-  max-width: 500px;
-  margin: 0 auto;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-/* â”€â”€ Scroll track â”€â”€ */
-.wrapper {
+/* ---------- Container Marquee 2 Baris ---------- */
+.marqueeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
   position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 1.5rem 0;
 }
 
+/* Edge Fade Gradient Kiri dan Kanan */
+.marqueeContainer::before,
+.marqueeContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.marqueeContainer::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.marqueeContainer::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.marqueeRow {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  cursor: grab;
+  cursor: -webkit-grab;
+  touch-action: pan-y;
+  overscroll-behavior-x: none;
+  padding: 0.5rem 0;
+}
+
+.marqueeRow:active,
+.isDragging {
+  cursor: grabbing !important;
+  cursor: -webkit-grabbing !important;
+}
+
+/* Track GPU Accelerated dengan ruang bernapas vertikal agar animasi tidak terpotong */
 .track {
   display: flex;
-  gap: 1.4rem;
-  padding: 2rem 4rem;
-  overflow-x: hidden;
-  cursor: grab;
-  user-select: none;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  /* Auto-scroll animasi pelan */
-  animation: autoScroll 40s linear infinite;
-  will-change: transform;
+  gap: 2.2rem;
   width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  padding-top: 1.75rem;
+  padding-bottom: 1.5rem;
 }
 
-.track::-webkit-scrollbar {
-  display: none;
-}
-
-.track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes autoScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* â”€â”€ Card â”€â”€ */
+/* ---------- Kartu Anggota ---------- */
 .card {
-  flex: 0 0 160px;
+  flex: 0 0 190px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.9rem;
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 0.55s var(--delay, 0s) ease,
-    transform 0.55s var(--delay, 0s) ease;
+  gap: 0.95rem;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: inherit;
+  transform: translateZ(0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  padding-top: 0.25rem;
 }
 
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
+.card:hover {
+  transform: translateY(-6px) translateZ(0);
 }
 
+.card:active {
+  transform: translateY(-2px) translateZ(0);
+}
+
+/* Foto Bulat Diperbesar */
 .photoWrap {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  border: 2px solid rgba(0, 0, 0, 0.08);
-  background: rgba(0, 0, 0, 0.04);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2.5px solid rgba(0, 0, 0, 0.08);
+  background: var(--bg-2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.card:hover .photoWrap {
-  transform: scale(1.06);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.18), 0 0 0 2px var(--accent);
+/* Stroke & Glow saat Hover / Klik — Perempuan (Merah / Accent) */
+.femaleCard:hover .photoWrap,
+.femaleCard:active .photoWrap {
+  transform: scale(1.05);
+  box-shadow: 0 14px 32px rgba(212, 43, 43, 0.22), 0 0 0 2.5px var(--accent);
+  border-color: var(--accent);
+}
+
+/* Stroke & Glow saat Hover / Klik — Laki-laki (BIRU) */
+.maleCard:hover .photoWrap,
+.maleCard:active .photoWrap {
+  transform: scale(1.05);
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.28), 0 0 0 2.5px #2563eb;
+  border-color: #2563eb;
 }
 
 .photo {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.placeholder {
+.card:hover .photo {
+  transform: scale(1.08);
+}
+
+/* Placeholder Avatar Modern */
+.avatarFallback {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--fg-2);
+  gap: 0.35rem;
+  position: relative;
+  box-sizing: border-box;
 }
 
-.placeholder svg {
-  width: 52px;
-  height: 52px;
+.femaleFallback {
+  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fecdd3 100%);
+  color: #e11d48;
+  border: 1px solid rgba(225, 29, 72, 0.15);
+}
+
+.maleFallback {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
+  color: #2563eb;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+}
+
+.avatarInitial {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  opacity: 0.95;
+}
+
+.avatarSilhouette {
+  width: 20px;
+  height: 20px;
   opacity: 0.45;
 }
 
+/* Kilauan Lembut */
 .shine {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, transparent 60%);
   pointer-events: none;
 }
 
+/* Info & Nama */
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .name {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--fg);
   text-align: center;
   white-space: nowrap;
   font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: color 0.25s ease;
 }
 
-/* â”€â”€ Fade edges â”€â”€ */
-.fadeLeft,
-.fadeRight {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 80px;
+.femaleCard:hover .name,
+.femaleCard:active .name {
+  color: var(--accent);
+}
+
+.maleCard:hover .name,
+.maleCard:active .name {
+  color: #2563eb;
+}
+
+/* Matikan transisi kartu saat di-drag */
+.isDragging .card {
   pointer-events: none;
-  z-index: 2;
+  transition: none !important;
 }
 
-.fadeLeft {
-  left: 0;
-  background: linear-gradient(to right, var(--bg), transparent);
+.isDragging .photo,
+.isDragging .photoWrap {
+  transition: none !important;
 }
 
-.fadeRight {
-  right: 0;
-  background: linear-gradient(to left, var(--bg), transparent);
-}
-
-/* â”€â”€ Hint â”€â”€ */
-.hint {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--fg-2);
-  opacity: 0.55;
-}
-
-.hint i {
-  font-size: 0.65rem;
-}
-
-@media (max-width: 768px) {
+/* ---------- Responsif ---------- */
+@media (max-width: 900px) {
   .section {
-    padding: 5rem 0 4rem;
-  }
-
-  .track {
-    padding: 2rem 1.5rem;
-    gap: 1.1rem;
+    padding: 4.5rem 0 5.5rem;
   }
 
   .card {
-    flex: 0 0 120px;
+    flex: 0 0 160px;
   }
 
   .photoWrap {
-    width: 110px;
-    height: 110px;
+    width: 145px;
+    height: 145px;
+  }
+
+  .avatarInitial {
+    font-size: 2.2rem;
+  }
+
+  .avatarSilhouette {
+    width: 18px;
+    height: 18px;
+  }
+
+  .marqueeContainer {
+    gap: 2rem;
+  }
+
+  .track {
+    gap: 1.75rem;
+  }
+
+  .marqueeContainer::before,
+  .marqueeContainer::after {
+    width: 80px;
+  }
+
+  .name {
+    font-size: 0.98rem;
   }
 }
 
+@media (max-width: 600px) {
+  .card {
+    flex: 0 0 140px;
+  }
+
+  .photoWrap {
+    width: 125px;
+    height: 125px;
+    border-width: 2px;
+  }
+
+  .avatarInitial {
+    font-size: 1.85rem;
+  }
+
+  .avatarSilhouette {
+    width: 16px;
+    height: 16px;
+  }
+
+  .marqueeContainer {
+    gap: 1.6rem;
+  }
+
+  .track {
+    gap: 1.4rem;
+  }
+
+  .marqueeContainer::before,
+  .marqueeContainer::after {
+    width: 36px;
+  }
+
+  .name {
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    flex: 0 0 128px;
+  }
+
+  .photoWrap {
+    width: 115px;
+    height: 115px;
+  }
+
+  .avatarInitial {
+    font-size: 1.7rem;
+  }
+
+  .name {
+    font-size: 0.88rem;
+  }
+}
