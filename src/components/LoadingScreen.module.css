@@ -152,9 +152,13 @@
   font-weight: 800 !important;
   letter-spacing: -0.04em !important;
   line-height: 0.92 !important;
-  color: #d42b2b !important;
+  color: #111827 !important;
   display: block !important;
   margin: 0 !important;
+}
+
+.titleAccent {
+  color: #d42b2b !important;
 }
 
 .subtitle {

@@ -61,7 +61,9 @@ export default function LoadingScreen({ onComplete }) {
         </div>
         <div className={styles.identity}>
           <span className={styles.kicker}>Karang Taruna</span>
-          <h1 className={styles.title}>ZeroFive</h1>
+          <h1 className={styles.title}>
+            Zero<span className={styles.titleAccent}>Five</span>
+          </h1>
           <span className={styles.subtitle}>
             RT 05 &middot; RW 03 &middot; Mulyorejo &middot; Malang
           </span>

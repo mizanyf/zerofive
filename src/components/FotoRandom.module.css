@@ -93,7 +93,7 @@
 
 /* ---------- Kartu Foto (Rasio Portrait 3:4) ---------- */
 .card {
-  flex: 0 0 270px;
+  flex: 0 0 300px;
   aspect-ratio: 3 / 4;
   border-radius: 12px;
   overflow: hidden;
@@ -152,7 +152,7 @@
   }
 
   .card {
-    flex: 0 0 220px;
+    flex: 0 0 250px;
   }
 
   .marqueeContainer {
@@ -171,7 +171,7 @@
 
 @media (max-width: 600px) {
   .card {
-    flex: 0 0 175px;
+    flex: 0 0 230px;
     border-radius: 10px;
   }
 
@@ -185,6 +185,12 @@
 
   .marqueeContainer::before,
   .marqueeContainer::after {
-    width: 48px;
+    width: 36px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    flex: 0 0 210px;
   }
 }
