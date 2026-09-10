@@ -37,7 +37,7 @@ export const ourStoryTop = [
   },
   {
     id: 5,
-    src: './images/gallery/our4.webp',
+    src: './images/gallery/our10.webp',
     alt: 'Our Story 5',
   },
   {
@@ -71,7 +71,7 @@ export const ourStoryTop = [
 export const ourStoryBottom = [
   {
     id: 11,
-    src: './images/gallery/our10.webp',
+    src: './images/gallery/our4.webp',
     alt: 'Our Story 11',
   },
   {
