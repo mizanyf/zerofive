@@ -2,16 +2,18 @@ import styles from './Contact.module.css';
 
 export default function Contact() {
   return (
-    <section id="kontak" className={styles.contact}>
+    <section id="media-sosial" className={styles.contact}>
+      {/* Anchor alias untuk backward compatibility */}
+      <span id="kontak" style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }} />
       <div className="container">
         <div className={styles.grid}>
-          {/* Contact Info */}
+          {/* Media Sosial Info */}
           <div className={`${styles.info} reveal`}>
-            <span className="section-kicker">Lokasi &amp; Kontak</span>
+            <span className="section-kicker">Media Sosial</span>
             <h2 className="section-title">
-              Temui
+              Media
               <br />
-              Kami
+              Sosial
             </h2>
 
             <div className={styles.detail}>

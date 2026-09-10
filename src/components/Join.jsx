@@ -30,11 +30,11 @@ export default function Join() {
           Pintu kami selalu terbuka.
         </p>
         <div className={`${styles.cta} reveal reveal-delay-3`}>
-          <a href="#kontak" className="btn btn-primary">
+          <a href="#media-sosial" className="btn btn-primary">
             Gabung Bersama Kami <i className="fas fa-arrow-right" />
           </a>
-          <a href="#kontak" className="btn btn-secondary">
-            Hubungi ZeroFive
+          <a href="#media-sosial" className="btn btn-secondary">
+            Media Sosial ZeroFive
           </a>
         </div>
       </div>

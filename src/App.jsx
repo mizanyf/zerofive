@@ -13,6 +13,7 @@ import Values from './components/Values';
 import Members from './components/Members';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import MusicPlayer from './components/MusicPlayer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -61,6 +62,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <MusicPlayer />
     </>
   );
 }

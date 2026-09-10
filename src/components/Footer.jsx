@@ -6,7 +6,7 @@ const navItems = [
   { href: '#kegiatan', label: 'Kegiatan' },
   { href: '#galeri', label: 'Galeri' },
   { href: '#event', label: 'Event' },
-  { href: '#kontak', label: 'Kontak' },
+  { href: '#media-sosial', label: 'Media Sosial' },
 ];
 
 const communityItems = [
@@ -14,7 +14,7 @@ const communityItems = [
   { href: '#kegiatan', label: 'Kegiatan Kami' },
   { href: '#galeri', label: 'Galeri Foto' },
   { href: '#event', label: 'Event Selesai' },
-  { href: '#kontak', label: 'Gabung Bersama' },
+  { href: '#media-sosial', label: 'Media Sosial' },
 ];
 
 export default function Footer() {

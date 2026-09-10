@@ -8,7 +8,7 @@ export default function LoadingScreen({ onComplete }) {
   const startRef = useRef(null);
 
   useEffect(() => {
-    const DURATION = 2400;
+    const DURATION = 1800;
 
     const animate = (timestamp) => {
       if (!startRef.current) startRef.current = timestamp;
@@ -21,11 +21,11 @@ export default function LoadingScreen({ onComplete }) {
         rafRef.current = requestAnimationFrame(animate);
       } else {
         setProgress(100);
-        setTimeout(() => setPhase('exit'), 500);
+        setTimeout(() => setPhase('exit'), 400);
         setTimeout(() => {
           setPhase('done');
           onComplete?.();
-        }, 1400);
+        }, 1100);
       }
     };
 
@@ -42,10 +42,27 @@ export default function LoadingScreen({ onComplete }) {
       ? 'Menyiapkan konten...'
       : progress < 90
       ? 'Menginisialisasi...'
-      : 'Selesai!';
+      : 'Selesai! Klik untuk masuk';
+
+  const handleScreenClick = () => {
+    if (phase === 'loading') {
+      setProgress(100);
+      setPhase('exit');
+      setTimeout(() => {
+        setPhase('done');
+        onComplete?.();
+      }, 700);
+    }
+  };
 
   return (
-    <div className={`${styles.loader} ${phase === 'exit' ? styles.exit : ''}`}>
+    <div
+      className={`${styles.loader} ${phase === 'exit' ? styles.exit : ''}`}
+      onClick={handleScreenClick}
+      role="button"
+      tabIndex={0}
+      title="Klik untuk langsung masuk ke website"
+    >
       <div className={styles.grain} aria-hidden="true" />
       <div className={styles.lines} aria-hidden="true">
         {[...Array(6)].map((_, i) => (

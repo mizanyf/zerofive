@@ -7,7 +7,7 @@ const navLinks = [
   { href: '#kegiatan', label: 'Kegiatan' },
   { href: '#galeri', label: 'Galeri' },
   { href: '#event', label: 'Event' },
-  { href: '#kontak', label: 'Kontak' },
+  { href: '#media-sosial', label: 'Media Sosial' },
 ];
 
 export default function Navbar() {
@@ -24,13 +24,13 @@ export default function Navbar() {
 
       if (isClickingRef.current) return;
 
-      const sectionIds = ['beranda', 'tentang', 'kegiatan', 'galeri', 'event', 'kontak'];
+      const sectionIds = ['beranda', 'tentang', 'kegiatan', 'galeri', 'event', 'media-sosial'];
 
-      // If near bottom of the page, highlight last section (kontak)
+      // If near bottom of the page, highlight last section (media-sosial)
       const atBottom =
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
       if (atBottom) {
-        setActiveSection('kontak');
+        setActiveSection('media-sosial');
         return;
       }
 
