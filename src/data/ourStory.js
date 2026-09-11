@@ -106,7 +106,7 @@ export const ourStoryBottom = [
   },
   {
     id: 18,
-    src: './images/gallery/our17.webp',
+    src: './images/gallery/random15.webp',
     alt: 'Our Story 18',
   },
   {

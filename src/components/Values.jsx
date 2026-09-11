@@ -36,7 +36,7 @@ export default function Values() {
               Kami Bawa
             </h2>
           </div>
-          <p>Empat nilai yang menggerakkan setiap langkah ZeroFive.</p>
+          <p>Empat nilai yang menggerakkan setiap langkah kami.</p>
         </div>
 
         <div className={styles.grid}>

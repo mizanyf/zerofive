@@ -151,7 +151,7 @@ export default function Events() {
             </h2>
           </div>
           <p>
-            Dokumentasi kegiatan ZeroFive yang telah berhasil kami laksanakan bersama. Setiap event
+            Dokumentasi kegiatan yang telah berhasil kami laksanakan bersama. Setiap event
             adalah cerita kebersamaan yang membanggakan.
           </p>
         </div>

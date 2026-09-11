@@ -264,7 +264,7 @@ export default function Members() {
             <h2 className="section-title">Anggota Kami</h2>
           </div>
           <p>
-            Pemuda dan pemudi kreatif yang menjadi motor penggerak kebersamaan, karya, dan setiap kegiatan di ZeroFive.
+            Pemuda dan pemudi kreatif yang menjadi motor penggerak kebersamaan, karya, dan setiap kegiatan kami.
           </p>
         </div>
       </div>

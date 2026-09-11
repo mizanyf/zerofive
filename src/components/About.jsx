@@ -62,7 +62,7 @@ export default function About() {
               ZeroFive
             </h2>
             <p>
-              ZeroFive adalah wadah bagi muda-mudi RT 05 RW 03 Kelurahan Mulyorejo untuk berkumpul,
+              Kami adalah wadah bagi muda-mudi RT 05 RW 03 Kelurahan Mulyorejo untuk berkumpul,
               berkarya, berkontribusi, dan membangun lingkungan bersama.
             </p>
             <p>

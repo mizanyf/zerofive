@@ -217,7 +217,7 @@ export default function FotoRandom() {
             <h2 className="section-title">Our Story</h2>
           </div>
           <p>
-            Setiap foto adalah jejak perjalanan, tawa, dan memori kebersamaan warga ZeroFive yang tak lekang oleh waktu.
+            Setiap foto adalah jejak perjalanan, tawa, dan memori kebersamaan kami yang tak lekang oleh waktu.
           </p>
         </div>
       </div>

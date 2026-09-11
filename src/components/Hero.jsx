@@ -52,7 +52,7 @@ export default function Hero() {
             Lihat Kegiatan <i className="fas fa-arrow-right" />
           </a>
           <a href="#tentang" className={`btn ${styles.btnSecondaryGlass}`}>
-            Tentang ZeroFive
+            Tentang Kami
           </a>
         </div>
       </div>

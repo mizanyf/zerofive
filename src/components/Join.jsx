@@ -26,7 +26,7 @@ export default function Join() {
           Cerita Kami.
         </h2>
         <p className="reveal reveal-delay-2">
-          Punya ide? Ingin ikut kegiatan? Atau sekadar ingin berkenalan dengan muda-mudi ZeroFive?
+          Punya ide? Ingin ikut kegiatan? Atau sekadar ingin berkenalan dengan kami?
           Pintu kami selalu terbuka.
         </p>
         <div className={`${styles.cta} reveal reveal-delay-3`}>
@@ -34,7 +34,7 @@ export default function Join() {
             Gabung Bersama Kami <i className="fas fa-arrow-right" />
           </a>
           <a href="#media-sosial" className="btn btn-secondary">
-            Media Sosial ZeroFive
+            Media Sosial Kami
           </a>
         </div>
       </div>

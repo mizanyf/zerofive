@@ -10,7 +10,7 @@ const navItems = [
 ];
 
 const communityItems = [
-  { href: '#tentang', label: 'Tentang ZeroFive' },
+  { href: '#tentang', label: 'Tentang Kami' },
   { href: '#kegiatan', label: 'Kegiatan Kami' },
   { href: '#galeri', label: 'Galeri Foto' },
   { href: '#event', label: 'Event Selesai' },
