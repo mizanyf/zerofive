@@ -98,18 +98,32 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Map */}
-          <div className={`${styles.mapWrap} reveal reveal-delay-1`}>
-            <iframe
-              src="https://www.google.com/maps?q=Mulyorejo+Malang&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Lokasi ZeroFive"
-            />
-            <div className={styles.mapOverlay} />
-            <div className={styles.mapPin}>
-              <i className="fas fa-map-marker-alt" />
-              <span>Mulyorejo, Malang</span>
+          {/* Map & Video Column */}
+          <div className={styles.mediaCol}>
+            {/* Map */}
+            <div className={`${styles.mapWrap} reveal reveal-delay-1`}>
+              <iframe
+                src="https://www.google.com/maps?q=Mulyorejo+Malang&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Lokasi ZeroFive"
+              />
+              <div className={styles.mapOverlay} />
+              <div className={styles.mapPin}>
+                <i className="fas fa-map-marker-alt" />
+                <span>Mulyorejo, Malang</span>
+              </div>
+            </div>
+
+            {/* Video Youtube (No Autoplay) */}
+            <div className={`${styles.videoWrap} reveal reveal-delay-2`}>
+              <iframe
+                src="https://www.youtube.com/embed/jcwDAYDOOH4"
+                title="MUDA MUDI 05 - ZEROFIVE"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
