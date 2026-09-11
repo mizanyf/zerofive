@@ -52,6 +52,14 @@ export default function Footer() {
               >
                 <i className="fab fa-tiktok" />
               </a>
+              <a
+                href="https://www.youtube.com/@zerofivve"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+              >
+                <i className="fab fa-youtube" />
+              </a>
             </div>
           </div>
 

@@ -53,6 +53,20 @@ export default function Contact() {
               </div>
             </div>
 
+            <div className={styles.detail}>
+              <div className={styles.label}>YouTube</div>
+              <div className={styles.value}>
+                <a
+                  href="https://www.youtube.com/@zerofivve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contactLink}
+                >
+                  @zerofivve
+                </a>
+              </div>
+            </div>
+
             <div className={styles.social}>
               <a
                 href="https://www.instagram.com/karangtaruna05mulyorejo"
@@ -71,6 +85,15 @@ export default function Contact() {
                 aria-label="TikTok"
               >
                 <i className="fab fa-tiktok" />
+              </a>
+              <a
+                href="https://www.youtube.com/@zerofivve"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="YouTube"
+              >
+                <i className="fab fa-youtube" />
               </a>
             </div>
           </div>
